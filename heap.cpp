@@ -1,6 +1,11 @@
 #include <iostream>
 using namespace std;
 #include <queue>
+
+//applications
+//heapsort
+//priority queue ==> useful in graphs algo such as dijkstra's shortest path and prim minimum spanning tree
+
 template <typename T>
 class minHeap
 {
@@ -81,27 +86,30 @@ public:
 	}
 	void heapify(int i)
 	{
-		int left_node = leftchild(i);
-		int right_node = rightchild(i);
-		int smallest = i;
-		if (left_node < cur_index && arr[left_node] < arr[i])
-			smallest = left_node;
-		if (right_node < cur_index && arr[right_node] < arr[smallest])
-			smallest = right_node;
-		if (smallest != i)
+		/*It takes the index of a heap node as a parameter.
+		Let ‘RIGHT’and ‘LEFT’ be the indices of its rightand left children.
+		Let i be the index of the minimum - key node among these three nodes.
+		If i is not equal to the node's index passed as a parameter, swap with the node at index i and recursively call the heapify() function with i passed as a parameter.*/
+
+		int left_node = leftchild(i);	//index of left child
+		int right_node = rightchild(i);	//index of right child 
+		int smallest = i;	//parent in this case 
+		if (left_node < cur_index && arr[left_node] < arr[i])	 
+			smallest = left_node;								
+		if (right_node < cur_index && arr[right_node] < arr[smallest])	
+			smallest = right_node;	
+		if (smallest != i)	//swap 
 		{
 			T temp = arr[i];
 			arr[i] = arr[smallest];
 			arr[smallest] = temp;
 			heapify(smallest);
 		}
-		
-
 	}
 	void deleteMin()	//always deletes the root 
 	{
 		if (cur_index == 0)
-			return;		//no values 
+			return;		//no values added to the heap yet
 		else
 		{
 			arr[0] = arr[cur_index - 1];
@@ -127,5 +135,8 @@ int main()
 	a.deleteMin();
 	a.insert(0);
 	cout << a.minimum() << endl;
+	a.print();
+	a.insert(10);
+	a.insert(20);
 	a.print();
 }
