@@ -108,11 +108,11 @@ public:
 	}
 	void deleteMin()	//always deletes the root 
 	{
-		if (cur_index == 0)//noot fsitim shaihd razadssdsdg
+		if (cur_index == 0)
 			return;		//no values added to the heap yet
 		else
 		{
-			arr[0] = arr[cur_index - 1];
+			arr[0] = arr[cur_index - 1];//sarais ok
 			cur_index--;
 			heapify(0);
 		}
