@@ -108,7 +108,7 @@ public:
 	}
 	void deleteMin()	//always deletes the root 
 	{
-		if (cur_index == 0)
+		if (cur_index == 0)//noot fsitim shaihd razadssdsdg
 			return;		//no values added to the heap yet
 		else
 		{
